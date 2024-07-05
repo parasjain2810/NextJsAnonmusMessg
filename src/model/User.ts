@@ -2,7 +2,8 @@ import mongoose, { Schema } from "mongoose";
 
 export interface Message extends Document{
    content:string,
-   createdAt:Date
+   createdAt:Date,
+   _id:string
 }
 export interface User extends Document{
    username:string,
@@ -24,6 +25,9 @@ const MessageSchema:Schema<Message>=new mongoose.Schema({
         type:Date,
         required:true,
         default:Date.now
+    },
+    _id:{
+        type:String,
     }
 })
 
@@ -58,9 +62,7 @@ const UserSchema:Schema<User>=new mongoose.Schema({
         type:Boolean,
         default:true
     },
-    messages:{
-        type:[MessageSchema]
-    }
+    messages:[MessageSchema]
 })
 
 const UserModel=(mongoose.models.User as mongoose.Model<User>)|| mongoose.model<User>("User",UserSchema);
