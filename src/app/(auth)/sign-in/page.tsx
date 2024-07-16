@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { signInSchema } from "@/Schema/signInSchema";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const page = () => {
  
@@ -70,7 +71,7 @@ const page = () => {
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
             Join True Feedback
           </h1>
-          <p className="mb-4">Sign up to start your anonymous adventure</p>
+          <div className="mb-4">Sign up to start your anonymous adventure</div>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -103,13 +104,19 @@ const page = () => {
 
         <Button type="submit" disabled={isSubmiting}>
           {
-            isSubmiting?
-            <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin"/>Please Wait</>:'SignIn'
+            isSubmiting?<><Loader2 className="mr-2 h-4 w-4 animate-spin"/>Please Wait</>:'SignIn'
           }
         </Button>
           </form>
         </Form>
+        <div className="text-center mt-4">
+          <div>
+            Not a member yet?{' '}
+            <Link href="/sign-up" className="text-blue-600 hover:text-blue-800">
+              Sign up
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )
