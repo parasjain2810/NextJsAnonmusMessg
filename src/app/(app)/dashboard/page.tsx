@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import MessageCard from "@/components/MessageCard"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"

@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-
+import { v4 as uuidv4 } from 'uuid';
 import UserModel, { Message, MessageModel } from "@/model/User";
 
 
@@ -29,7 +29,8 @@ export const POST=async(req:Request)=>{
         }
 
         const newMessage=await MessageModel.create({content,createdAt:new Date()})
-        const newMessageId=(newMessage._id).toString()
+       
+        const newMessageId=newMessage._id.toString()
         const latestMessage={content,createdAt:new Date(),_id:newMessageId}
 
         user.messages.push(latestMessage as Message);

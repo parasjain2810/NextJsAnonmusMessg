@@ -42,6 +42,6 @@ export const DELETE=async(req:Request,{params}:{params:{messageId:string}})=>{
         return Response.json({
             success:false,
             message:'message deletion failed'
-        })
+        },{status:500})
     }
 }
